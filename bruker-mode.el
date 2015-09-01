@@ -38,10 +38,15 @@
   '("subr" "define" "lo" "to" "if" "else" "exit" "goto" "grad" "groff" "gron" "times"
     )
   ; font-lock-list : Custom Faces
-  '(("\\(;.*\\)" 1 'font-lock-comment-face))
+  '(("\\(;.*\\)" 1 'font-lock-comment-face)
+    ("^\\s-*\\([a-zA-Z]+\\)," 1 'font-lock-function-name-face)
+;    ((regexp-opt '("include"")) 1 'font-lock-preprocessor-face)
+    )
   ; auto-mode-list : Filename extension
   '("\\.ppg\\'")
   ; function-list : Other functions to call
   (list (lambda () (setq comment-start ";")))
   ; Description
   "Major mode for very simple Bruker pulse program highlighting." )
+
+            
