@@ -22,28 +22,33 @@
 ; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 ; POSSIBILITY OF SUCH DAMAGE.
 ;
-; check out: http://ergoemacs.org/emacs/elisp_basics.html
+; To install Bruker mode into your emacs, put the bruker-mode.el
+; file in your load path and add the following to your emacs 
+; initialization file:
 ;
-; To install Bruker mode into your emacs, add the following to
-; your emacs initialization file:
+; (require 'bruker-mode)
 ;
-; (autoload 'bruker-mode "...path/to/bruker-mode.el" t)
-; (add-to-list 'auto-mode-alist '("\\.ppg\\'" . bruker-mode))
+; if you dont have a local load-path, then do something like this
+; to modify it (before the require):
+;
+; (add-to-list 'load-path "~/.emacs.d/")
 ;
 
 (define-generic-mode 'bruker-mode
   ; comment-list : Comments start with ';'
   '(";")
   ; keyword-list : Keywords
-  '("subr" "define" "lo" "to" "if" "else" "exit" "goto" "grad" "groff" "gron" "times"
+  '("define" "else" "exit" "goto" "grad" "groff" "gron" "if" 
+    "lo" "subr" "subroutine" "times" "to"
     )
   ; font-lock-list : Custom Faces
   '(("\\(;.*\\)" 1 'font-lock-comment-face)
     ("^\\s-*\\([a-zA-Z]+\\)," 1 'font-lock-function-name-face)
-;    ((regexp-opt '("include"")) 1 'font-lock-preprocessor-face)
+    ;((regexp-opt '("#include")) 1 'font-lock-preprocessor-face)
+    ("\\(#include\\)" 1 'font-lock-preprocessor-face)
     )
   ; auto-mode-list : Filename extension
-  '("\\.ppg\\'")
+  '("\\.ppg\\'" "\\.4ch\\'" "\\.plt\\'")
   ; function-list : Other functions to call
   (list (lambda () (setq comment-start ";")))
   ; Description
