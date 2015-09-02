@@ -55,3 +55,4 @@
   "Major mode for very simple Bruker pulse program highlighting." )
 
             
+(provide 'bruker-mode)

@@ -7,6 +7,13 @@ install
 to install this mode into your emacs installation, add the following to
 your emacs init file (ie ~/.emacs):
 
-'''
- (autoload 'bruker-mode "...path/to/bruker-mode.el" t)
-'''
+```lisp
+ (require 'bruker-mode)
+```
+
+and copy the file bruker-mode.el to your local load path, if you have no 
+local load path, set one up and copy it there, ie:
+
+```lisp
+ (add-to-list 'load-path "~/.emacs.d/")
+```
